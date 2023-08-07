@@ -34,14 +34,26 @@
 package src.java.validate_binary_search_tree;
 
 public class ValidateBinarySearchTree {
+
+    /*
+    Base on what we know BST tree is valid when all the node in the left be smaller that the root node and
+    all the node on the right side be larger than the root node. So we need to have the value of the root node with use,
+    for this reason we will create a helper function.
+    */
     public boolean isValidBST(TreeNode root) {
         return isValidBSTHelper(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 
     private boolean isValidBSTHelper(TreeNode root, long minValue, long maxValue) {
 
-        if (root == null) return true;
-        else if (root.val <= minValue || root.val >= maxValue) return false;
+        if (root == null) return true; // When we reach to the leaf node we need to return true.
+        else if (root.val <= minValue || root.val >= maxValue) return false;  // Why this ?!
+        /*
+        As we said we need all node in the left must be smaller than root and all node the in right must be bigger than
+        root, so when we send the left node to this function we know that this node must be smaller than the root, so we send
+        the root value as max value to this function. If node is bigger than max value it means that the left node is bigger
+        than the root so this is false(This is not a valid BST tree.)
+        */
         return isValidBSTHelper(
                 root.left,
                 minValue,
