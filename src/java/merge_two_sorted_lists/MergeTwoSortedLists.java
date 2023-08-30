@@ -35,14 +35,18 @@ public class MergeTwoSortedLists {
 
         ListNode newList = new ListNode();
 
-        if (list1 == null) {
+        if (list1 == null) { // will check if the list number 1 is empty or not !!
+            // If it is empty we just need to return back the list number 2 and we do not need to know what
+            // is inside the list number 2.
             return list2;
-        } else if (list2 == null) {
+        } else if (list2 == null) { // we will do the same thing as above code.
             return list1;
-        } else if (list1.val < list2.val) {
+        } else if (list1.val < list2.val) { //Ok, now we know that the list is not the empty so we check the values.
+            // If the value of list number 1 is lesser than list number 2, so we will add it to the new list.
             newList.val = list1.val;
-            newList.next = mergeTwoLists(list1.next, list2);
+            newList.next = mergeTwoLists(list1.next, list2); // for next value we call our function !!!.
         } else {
+            // this is the same thing as above.
             newList.val = list2.val;
             newList.next = mergeTwoLists(list1, list2.next);
         }
