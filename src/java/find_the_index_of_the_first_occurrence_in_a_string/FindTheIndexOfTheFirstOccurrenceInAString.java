@@ -22,7 +22,7 @@
  * haystack and needle consist of only lowercase English characters.
  */
 
-package src.java.FindTheIndexOfTheFirstOccurrenceInAString;
+package src.java.find_the_index_of_the_first_occurrence_in_a_string;
 
 public class FindTheIndexOfTheFirstOccurrenceInAString {
 
