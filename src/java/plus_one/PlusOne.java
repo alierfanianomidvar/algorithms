@@ -41,6 +41,15 @@ package src.java.plus_one;
 public class PlusOne {
     public int[] solution(int[] digits) {
 
-        return null;
+        int length = digits.length;
+
+        if(digits[length-1] < 9 ){
+            digits[length-1] ++;
+            return digits;
+        } else if (length == 1){
+            return new int[]{1,0};
+        } else{
+            return null;
+        }
     }
 }
