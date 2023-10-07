@@ -42,18 +42,18 @@ public class PlusOne {
     public int[] solution(int[] digits) {
 
         int length = digits.length;
-
         if(digits[length-1] < 9 ){
-            digits[length-1] ++;
+            digits[length-1] ++; // if the last the array is less than 9, we just add one to it.
             return digits;
         } else if (length == 1){
-            return new int[]{1,0};
+            return new int[]{1,0}; // for only one condition that we have only one in the array !!!
         } else{
-            digits[length - 1]++;
+            digits[length - 1]++; // let add one to the last array
             int carry = 0;
             for (int i = digits.length - 1; i >= 0; i--) {
-                int sum = digits[i] + carry;
-                if (sum >= 10) {
+                int sum = digits[i] + carry; // at first, we add the last part, so we are adding the last number to zero
+                //For other, we are adding the carry which is 0 or 1 !.
+                if (sum >= 10) { // if the number is 10 so we must put the 0 value in the array.
                     carry = 1;
                     digits[i] = sum % 10;
                 } else {
@@ -62,6 +62,8 @@ public class PlusOne {
                 }
             }
             if(carry != 0 ){
+                // if the carry is 1, its means the first number of the list was 9 so we must create a
+                // new list with new length
                 int[] result = new int[length + 1];
                 result[0] = 1;
                 System.arraycopy(digits, 0, result, 1, digits.length);
