@@ -49,7 +49,25 @@ public class PlusOne {
         } else if (length == 1){
             return new int[]{1,0};
         } else{
-            return null;
+            digits[length - 1]++;
+            int carry = 0;
+            for (int i = digits.length - 1; i >= 0; i--) {
+                int sum = digits[i] + carry;
+                if (sum >= 10) {
+                    carry = 1;
+                    digits[i] = sum % 10;
+                } else {
+                    carry = 0;
+                    digits[i] = sum;
+                }
+            }
+            if(carry != 0 ){
+                int[] result = new int[length + 1];
+                result[0] = 1;
+                System.arraycopy(digits, 0, result, 1, digits.length);
+                return result;
+            }
+            return digits;
         }
     }
 }
