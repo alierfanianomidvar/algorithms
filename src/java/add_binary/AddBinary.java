@@ -22,7 +22,43 @@ package src.java.add_binary;
 public class AddBinary {
 
     public String solution(String a, String b) {
+        int sizeStringA = a.length();
+        int sizeStringB = b.length();
+        int carry = 0;
         
+        StringBuilder output = new StringBuilder();
+
+        while(sizeStringA >= 0 || sizeStringB >= 0){
+            int sum = carry;
+            if(sizeStringA >= 0 ){
+                sum += a.CharAt(sizeStringA) - '0';
+            }
+            if(sizeStringB >= 0 ){
+                sum += b.CharAt(sizeStringB) - '0';
+            }
+
+            if(sum == 0 || sum == 1){
+                output.append(sum);
+                carry = 0;
+            } else if(sum == 2) {
+                output.append("0");
+                carry = 1;
+            } else {
+                output.append("1");
+                carry = 1;
+            }
+            sizeStringA --;
+            sizeStringB --;
+        }
+
+        if(carry == 1){
+            output.append("1")
+        }
+        return output.reverse().tostring(); 
     }
 
+   
+    
+
+   
 }
