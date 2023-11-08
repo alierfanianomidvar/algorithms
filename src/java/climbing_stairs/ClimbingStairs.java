@@ -33,7 +33,22 @@ package src.java.climbing_stairs;
 public class ClimbingStairs {
 
     public int solution(int n) {
-
-        return 0;
+        int[] m = new int[n+1]; // We need to cache data to make the algo faster!!
+        return climbStairsWithCache(n, m);
+    }
+    public static int climbStairsWithCache(int n, int[] m) {
+        if(m[n]>0){ // If we have the value just return the value !!
+            return m[n];
+        }
+        if(n == 1){
+            m[n] = 1;
+        } else if (n == 2) {
+            m[n] = 2;
+        } else {
+            m[n] = climbStairsWithCache(n-1, m) + climbStairsWithCache(n-2, m);
+            // We reach to the n`th stairs with 2 way, using the n-1 stairs or the n-2 stairs!! so we must find the number
+            // for those stairs too.
+        }
+        return m[n];
     }
 }
