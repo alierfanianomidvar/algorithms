@@ -25,7 +25,26 @@ import java.util.List;
 public class deleteDuplicates {
 
     public ListNode Solution(ListNode head) {
-
-        return new ListNode();
+        ListNode newList = new ListNode();
+        return r(head);
     }
+
+
+    public ListNode r(ListNode head) {
+
+        if (head == null) {
+            return null; // Base case: if the list is empty, nothing to do.
+        }
+        // Recursive case: if the next node is not null, check for duplicates.
+        if (head.next != null && head.val == head.next.val) {
+            // If the current node is a duplicate, skip it.
+            head = r(head.next);
+        } else {
+            // If the current node is not a duplicate, continue to the next node.
+            head.next = r(head.next);
+        }
+        return head; // Return the head of the modified list.
+
+    }
+
 }
