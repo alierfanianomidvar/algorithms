@@ -45,7 +45,28 @@ package src.java.merge_sorted_array;
 public class MergeSortedArray {
 
     public void solution(int[] nums1, int m, int[] nums2, int n) {
-
+        //We can use a temp list and with that we can start from begging of our lists and still the algo will run in
+        //the o(m+n), But we can do it another way, we know that nums1 have empty space, so we will start from the end of
+        //lists.
+        int k = n+m-1;
+        int i = m-1;
+        int j = n-1;
+        while (i >= 0 && j >= n) {
+            if (nums1[i]  > nums2[j]) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
+            }
+            k--;
+        }
+        // Copy remaining elements of nums2[], if any
+        while (j >= 0) {
+            nums1[k] = nums2[j];
+            j--;
+            k--;
+        }
     }
 
 }
