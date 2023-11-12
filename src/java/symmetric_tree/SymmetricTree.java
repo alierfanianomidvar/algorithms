@@ -27,6 +27,22 @@ package src.java.symmetric_tree;
 public class SymmetricTree {
 
     public boolean solution(TreeNode root) {
-        return false;
+
+        return recursive(root.left, root.right);
+    }
+
+    public boolean recursive(TreeNode left, TreeNode right){
+
+        if(left == null && right == null) // If the left and the right side are null, we will return true.
+            return true;
+
+        if(left == null || right== null || left.val != right.val)
+            // If the left or the right side is null, or they do not have same value
+            // we will return false.
+            return false;
+
+
+        // the far left side must be same as the far right and right side of left :) and left side of right must be same.
+        return recursive(left.left, right.right) && recursive(left.right, right.left);
     }
 }
