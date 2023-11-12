@@ -28,8 +28,15 @@ package src.java.same_tree;
 
 public class SameTree {
 
-    public boolean Solution(TreeNode p, TreeNode q) {
-        return false;
+    public boolean solution(TreeNode p, TreeNode q) {
+
+        if (p == null && q == null) { // if they both are null we are ok.
+            return true;
+        }
+        if (p == null || q == null || p.val != q.val) { // if one of them are null or the value is not equal return false.
+            return false;
+        }
+        return solution(p.left,q.left) && solution(p.right,q.right); // go to the next level
     }
 
 }
