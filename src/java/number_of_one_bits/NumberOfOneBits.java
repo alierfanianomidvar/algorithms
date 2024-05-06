@@ -10,7 +10,7 @@ public class NumberOfOneBits {
             if (n % 2 == 1) {
                 counter++;
             }
-            n = n >>= 1; // this make code faster;
+            n >>= 1;// this make code faster;
         }
 
         return counter;
