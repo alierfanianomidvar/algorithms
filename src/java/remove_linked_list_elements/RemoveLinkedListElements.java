@@ -14,7 +14,7 @@ public class RemoveLinkedListElements {
 
     public ListNode removeElements(ListNode head, int val) {
 
-        ListNode dummy = new ListNode(-1);
+        ListNode dummy = new ListNode(-1); // to be able to see the first node too.
         dummy.next = head;
         ListNode current = dummy;
 
