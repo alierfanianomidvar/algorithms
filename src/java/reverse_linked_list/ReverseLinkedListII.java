@@ -15,46 +15,36 @@ class ListNode {
 }
 
 public class ReverseLinkedListII {
+
+    private ListNode successor = null;  // Node after the last reversed node
+
     public ListNode reverseBetween(ListNode head, int left, int right) {
-
-
-        if (head == null) {
-            return head;
-        }
-        if (head.next == null) {
-            return head;
+        if (head == null || left == right) return head;
+        if (left == 1) {
+            // Start reversal from the head
+            return reverseN(head, right - left + 1);
         }
 
-        ListNode check = head;
-
-        for (int i = 0; i < left - 1; i++) {
-            check = check.next;
+        // Find the node just before the start of the reversal
+        ListNode prev = head;
+        for (int i = 1; i < left - 1; i++) {
+            prev = prev.next;
         }
 
-        List<ListNode> newHead = r(null, head, right, left);
-        check.next.next = newHead.get(1);
-        check.next = newHead.get(0);
-
-
+        // Recursively reverse the next part of the list
+        prev.next = reverseN(prev.next, right - left + 1);
         return head;
     }
 
-    private List<ListNode> r(ListNode p, ListNode node, int right, int position) {
-
-        if (position == right) {
-            ListNode theNewNextForTheRightNode = node.next;
-            node.next = p;
-            return Arrays.asList(node, theNewNextForTheRightNode);
+    private ListNode reverseN(ListNode head, int count) {
+        if (count == 1) {
+            successor = head.next;
+            return head;
         }
 
-        if (node.next != null) {
-            List<ListNode> theNewNextForTheRightNode = r(node, node.next);
-            node.next = p;
-            return Arrays.asList(node, theNewNextForTheRightNode);
-        }
-
-        ListNode theNewNextForTheRightNode = node.next;
-        node.next = p;
-        return Arrays.asList(node, theNewNextForTheRightNode);
+        ListNode newHead = reverseN(head.next, count - 1);
+        head.next.next = head;
+        head.next = successor;
+        return newHead;
     }
 }
