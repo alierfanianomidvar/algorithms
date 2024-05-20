@@ -8,9 +8,9 @@ public class InvertBinaryTree {
         }
 
         // Swap the left and right children
-        TreeNode temp = root.left;
+        TreeNode temp = root.left; // we first the change the left side, so we need to save the left side of the problem.
         root.left = invertTree(root.right);
-        root.right = invertTree(temp);
+        root.right = invertTree(temp); // then we are swapping the right side.
 
         return root;
     }
