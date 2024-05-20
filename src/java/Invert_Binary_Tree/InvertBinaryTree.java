@@ -3,7 +3,15 @@ package src.java.Invert_Binary_Tree;
 public class InvertBinaryTree {
 
     public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
 
-        return new TreeNode();
+        // Swap the left and right children
+        TreeNode temp = root.left;
+        root.left = invertTree(root.right);
+        root.right = invertTree(temp);
+
+        return root;
     }
 }
