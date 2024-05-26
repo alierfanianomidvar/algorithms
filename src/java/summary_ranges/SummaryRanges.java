@@ -36,8 +36,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SummaryRanges {
-    public List<String> summaryRanges(int[] nums) {
 
-        return new ArrayList<>();
+    public List<String> summaryRanges(int[] nums) {
+        List<String> summaryRanges = new ArrayList<>();
+
+        if (nums.length == 0) {
+            return summaryRanges;
+        }
+
+        int start = 0;
+        for (int i = 1; i <= nums.length; i++) {
+            if (i == nums.length || nums[i] != nums[i - 1] + 1) {
+                if (start == i - 1) {
+                    summaryRanges.add(String.valueOf(nums[start]));
+                } else {
+                    summaryRanges.add(nums[start] + "->" + nums[i - 1]);
+                }
+                start = i;
+            }
+        }
+
+        return summaryRanges;
     }
+
 }
