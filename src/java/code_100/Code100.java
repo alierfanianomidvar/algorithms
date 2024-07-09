@@ -42,32 +42,33 @@ public class Code100 {
         int counter = 0;
         for (int[] position : coords) {
 
-            // we only check the the position inside of the 100 box ! For sure we know that the out side this box we do not pick any position.
+            //there is an inner rectangle, we want the point inside of that - >
             if (position[0] >= 145 &&
                     position[0] <= 485 &&
                     position[1] >= 75 &&
                     position[1] <= 225) {
 
-                // 1 - > in the first if we checked the y-position.
+                // 1 - > position of the points inside the 1
                 if (position[0] <= 165) {
                     counter++;
                     continue;
                 }
 
-                // c1 -> 250 x 150, r1 = 55, r2 = 75;
+                //0 - >  c1 -> 250 x 150, r1 = 55, r2 = 75;
                 int z1 = (position[0] - 250) * (position[0] - 250) + (position[1] - 150) * (position[1] - 150);
-                if (z1 >= 3025 && z1 <= 5625) {
+                if (z1 > 3025 && z1 < 5625) {
                     counter++;
                     continue;
                 }
 
-                // c2 -> 410 x 150, r1 = 55, r2 = 75;
+                //0 -> c2 -> 410 x 150, r1 = 55, r2 = 75;
                 int z2 = (position[0] - 410) * (position[0] - 410) + (position[1] - 150) * (position[1] - 150);
-                if (z2 >= 3025 && z2 <= 5625) {
+                if (z2 > 3025 && z2 < 5625) {
                     counter++;
                 }
             }
         }
+
         return counter;
     }
 }
