@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Code100 {
 
-    private void solve() {
+    public void solve() {
 //        {
 //            "width": 600,
 //            "height": 300,

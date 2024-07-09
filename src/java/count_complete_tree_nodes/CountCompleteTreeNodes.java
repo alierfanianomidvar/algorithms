@@ -13,7 +13,7 @@ class TreeNode {
 public class CountCompleteTreeNodes {
 
     public int solution(TreeNode root) {
-        return countNodesR(root);
+        return countNodes(root);
     }
 
     // Function to compute the height of the tree
