@@ -32,7 +32,17 @@ package src.java.ugly_number;
 public class UglyNumber {
 
     public boolean Solution(int n) {
-
-        return true;
+        if (n == 0) {
+            return false;
+        } else if (n > 0 && n <= 3) {
+            return true;
+        } else if (n % 2 == 0) {
+            return Solution(n / 2);
+        } else if (n % 3 == 0) {
+            return Solution(n / 3);
+        } else if (n % 5 == 0) {
+            return Solution(n / 5);
+        }
+        return false;
     }
 }
