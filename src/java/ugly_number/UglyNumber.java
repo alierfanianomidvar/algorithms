@@ -34,7 +34,7 @@ public class UglyNumber {
     public boolean Solution(int n) {
         if (n == 0) {
             return false;
-        } else if (n > 0 && n <= 3) {
+        } else if (n > 0 && n <= 3) { // smallest prime number, if we factor base 2,3,5, we always reach to theis numbers.
             return true;
         } else if (n % 2 == 0) {
             return Solution(n / 2);
